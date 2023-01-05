@@ -1,20 +1,22 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React from "react";
+import {
+  DarkTheme,
+  DefaultTheme,
+  NavigationContainer,
+} from "@react-navigation/native";
+// import Stacks from "./navigation/Stacks";
+// import Tabs from "./navigation/Tabs";
+import Root from "./navigation/Root";
+import { useColorScheme } from "react-native"; //다크모드
 
-export default function App() {
+const App = () => {
+  // const isDark = useColorScheme() === "dark"; //dark이면 true값을 반환한다.
+  const sheme = useColorScheme();
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer theme={sheme === "dark" ? DarkTheme : DefaultTheme}>
+      <Root></Root>
+    </NavigationContainer>
   );
-}
+};
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default App;
