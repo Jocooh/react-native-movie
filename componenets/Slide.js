@@ -36,7 +36,10 @@ function Slide({ movie }) {
         <Description>
           <MainText>{movie.title}</MainText>
           <SubText>{movie.vote_average}</SubText>
-          <Article>{movie.overview}</Article>
+          <Article>
+            {movie.overview.slice(0, 150)}
+            {movie.overview.length > 150 && "..."}
+          </Article>
         </Description>
       </SecondContainer>
     </SwiperChildView>
